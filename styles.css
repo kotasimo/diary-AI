@@ -22,6 +22,7 @@ body {
   color: var(--ink);
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
   font-size: 14px;
+  min-width: 944px;
 }
 
 button,
@@ -36,7 +37,7 @@ button {
 }
 
 .shell {
-  width: min(1180px, 85vw);
+  width: 944px;
   margin: 0 auto;
   background: var(--paper);
   min-height: 100vh;
@@ -109,7 +110,7 @@ button {
 
 .hero h1 {
   margin: 0 0 4px;
-  font-size: clamp(28px, 5vw, 42px);
+  font-size: 42px;
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -122,13 +123,13 @@ button {
 
 .layout {
   display: grid;
-  grid-template-columns: 210px 549px 1fr;
+  grid-template-columns: 168px 494px 1fr;
   gap: 14px;
   padding: 14px 16px 22px;
 }
 
 .compact-layout {
-  grid-template-columns: 210px 549px 1fr;
+  grid-template-columns: 168px 494px 1fr;
 }
 
 .center-column {
@@ -187,16 +188,16 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
+  padding: 6px 8px;
   color: white;
   background: var(--blue);
   font-weight: 900;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .icon-btn {
-  width: 26px;
-  height: 26px;
+  width: 21px;
+  height: 21px;
   border: 0;
   border-radius: 4px;
   background: rgba(255,255,255,.18);
@@ -214,9 +215,9 @@ button {
 .mini-calendar th,
 .mini-calendar td {
   text-align: center;
-  height: 27px;
+  height: 22px;
   border: 1px solid #d3dde3;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .mini-calendar th:nth-child(6),
@@ -321,33 +322,34 @@ button {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  padding: 9px 6px 7px;
+  padding: 7px 4px 6px;
   color: #53606a;
   font-weight: 700;
+  font-size: 12px;
   background: #f7fbfd;
 
   border-bottom: 1px solid #d3e3eb;
 }
 
 .calendar-jump input {
-  width: 58px;
-  height: 22px;
+  width: 46px;
+  height: 20px;
   border: 1px solid #aeb9c0;
   padding: 2px 4px;
   text-align: center;
 }
 
 .calendar-jump input[name="jumpMonth"] {
-  width: 40px;
+  width: 32px;
 }
 
 .calendar-jump button {
-  height: 24px;
+  height: 21px;
   border: 0;
   background: #70777c;
   color: white;
-  padding: 2px 7px;
-  font-size: 11px;
+  padding: 2px 5px;
+  font-size: 10px;
   font-weight: 800;
 }
 
@@ -652,53 +654,3 @@ button {
   margin-top: 16px;
 }
 
-@media (max-width: 980px) {
-  .layout {
-    grid-template-columns: 190px minmax(0, 1fr);
-  }
-
-  .compact-layout {
-    grid-template-columns: 190px minmax(0, 1fr);
-  }
-
-  .center-column {
-    grid-column: auto;
-  }
-}
-
-@media (max-width: 720px) {
-  .shell {
-    width: 100%;
-  }
-
-  .topbar,
-  .account-strip,
-  .entry {
-    display: block;
-  }
-
-  .brand {
-    margin-bottom: 8px;
-  }
-
-  .hero {
-    margin: 0;
-    padding: 24px 18px;
-  }
-
-  .layout {
-    grid-template-columns: 1fr;
-    padding: 0 10px 18px;
-  }
-
-  .entry-date {
-    margin-top: 8px;
-    text-align: left;
-  }
-
-  .diary-footer {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-}
