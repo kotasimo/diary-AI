@@ -18,7 +18,7 @@ export function ReadModal({
     }}>
       <div className="modal">
         <div className="modal-header">
-          <h2>{formatDate(date)} の日記</h2>
+          <h2>{formatDate(date)}</h2>
           <button className="close-btn" aria-label="閉じる" onClick={onClose}>
             ×
           </button>

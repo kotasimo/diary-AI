@@ -45,7 +45,7 @@ export function ProfilePanel({
       <div className="panel-body">
         <form className="form" onSubmit={handleSubmit}>
           <label>
-            表示名
+            名前
             <input value={displayName} onChange={(event) => setDisplayName(event.target.value)} />
           </label>
           <label>
@@ -56,10 +56,7 @@ export function ProfilePanel({
             タグライン
             <input value={tagline} onChange={(event) => setTagline(event.target.value)} />
           </label>
-          <label>
-            位置
-            <input value={location} onChange={(event) => setLocation(event.target.value)} />
-          </label>
+          
           {message ? <p className="form-message">{message}</p> : null}
           <div className="form-actions">
             <button className="primary" type="submit">

@@ -4,20 +4,29 @@ import { AuthMode } from "../types";
 import { formatSupabaseError } from "../utils/supabase";
 import { getSupabaseClient, isSupabaseConfiguredFlag } from "../utils/supabaseClient";
 
+let cachedSession: Session | null = null;
+let hasCheckedSession = false;
+
 export function useAuth() {
   const [authMode, setAuthMode] = useState<AuthMode>("login");
-  const [session, setSession] = useState<Session | null>(null);
+  const [session, setSession] = useState<Session | null>(cachedSession);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     const supabase = getSupabaseClient();
     if (!supabase) return;
 
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-    });
+    if (!hasCheckedSession) {
+      supabase.auth.getSession().then(({ data }) => {
+        cachedSession = data.session;
+        hasCheckedSession = true;
+        setSession(data.session);
+      });
+    }
 
     const { data } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      cachedSession = nextSession;
+      hasCheckedSession = true;
       setSession(nextSession);
     });
 
@@ -39,6 +48,7 @@ export function useAuth() {
         return;
       }
       if (data?.session) {
+        cachedSession = data.session;
         setSession(data.session);
       }
       setMessage("登録しました。確認メールが有効な場合はメール認証後にログインしてください。");
@@ -63,6 +73,7 @@ export function useAuth() {
       return;
     }
     if (data?.session) {
+      cachedSession = data.session;
       setSession(data.session);
     }
     setMessage("ログインしました。");
